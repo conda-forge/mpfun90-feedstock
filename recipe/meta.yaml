@@ -12,7 +12,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 0
+  number: 1
   run_exports:
     # MPFUN90 is archival software and the ABI should be static
     - {{ pin_subpackage('mpfun90', max_pin='x') }}
