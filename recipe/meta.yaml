@@ -1,5 +1,5 @@
 {% set name = "mpfun90" %}
-{% set version = "2024.12.05" %}
+{% set version = "2024-12-06" %}
 
 package:
   name: {{ name }}
@@ -8,11 +8,11 @@ package:
 source:
   # need to match the GitHub version tag but only want one variable
   url: https://github.com/APN-Pucky/mpfun90/archive/{{ version | replace('.', '-') }}.tar.gz
-  sha256: a273027f373eaa23743503612de4ca448628b5c1521510c21d5da3a5cfde79f5
+  sha256: 6a2e8f772f0c4a6f1af5f81b5b303e7ad91bab02c3f78da81e553c38585907c4
 
 build:
   skip: true  # [win]
-  number: 1
+  number: 0
   run_exports:
     # MPFUN90 is archival software and the ABI should be static
     - {{ pin_subpackage('mpfun90', max_pin='x') }}
