@@ -3,11 +3,11 @@
 
 package:
   name: {{ name }}
-  version: {{ version }}
+  version: {{ version | replace('-', '.') }}
 
 source:
   # need to match the GitHub version tag but only want one variable
-  url: https://github.com/APN-Pucky/mpfun90/archive/{{ version | replace('.', '-') }}.tar.gz
+  url: https://github.com/APN-Pucky/mpfun90/archive/{{ version }}.tar.gz
   sha256: 6a2e8f772f0c4a6f1af5f81b5b303e7ad91bab02c3f78da81e553c38585907c4
 
 build:
