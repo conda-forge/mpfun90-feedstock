@@ -1,24 +1,24 @@
 {% set name = "mpfun90" %}
-{% set version = "2024.12.05" %}
+{% set version = "2024-12-06" %}
 
 package:
   name: {{ name }}
-  version: {{ version }}
+  version: {{ version | replace('-', '.') }}
 
 source:
   # need to match the GitHub version tag but only want one variable
-  url: https://github.com/APN-Pucky/mpfun90/archive/{{ version | replace('.', '-') }}.tar.gz
-  sha256: a273027f373eaa23743503612de4ca448628b5c1521510c21d5da3a5cfde79f5
+  url: https://github.com/APN-Pucky/mpfun90/archive/{{ version }}.tar.gz
+  sha256: 6a2e8f772f0c4a6f1af5f81b5b303e7ad91bab02c3f78da81e553c38585907c4
 
 build:
   skip: true  # [win]
-  number: 1
+  number: 0
   run_exports:
     # MPFUN90 is archival software and the ABI should be static
     - {{ pin_subpackage('mpfun90', max_pin='x') }}
   script:
-    # FIXME: https://github.com/APN-Pucky/mpfun90/commit/d00bfe06b8f69329464906817f7f8b795bed5388
-    - sed -i 's/ -Wl,--as-needed -Wl,-soname,libmpfun90.so / /g' Makefile  # [not linux]
+    # FIXME: https://github.com/APN-Pucky/mpfun90/commit/892fc285f874bd63dfa5d1d0419ca666995cdd9f
+    - sed -i 's/ -Wl,-soname,libmpfun90.so / /g' Makefile  # [not linux]
 
     - sed -i "s/libmpfun90.so/libmpfun90${SHLIB_EXT}/g" Makefile  # [not linux]
     - export LDFLAGS="$LDFLAGS -lgfortran"  # [not linux]
