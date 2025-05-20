@@ -19,7 +19,6 @@ David H. Bailey, "_A Fortran 90-based multiprecision system_,"
 ACM Transactions on Mathematical Software (TOMS), 21 (1995) 379
 DOI: [10.1145/212066.212075](https://doi.org/10.1145/212066.212075)
 
-
 Current build status
 ====================
 
